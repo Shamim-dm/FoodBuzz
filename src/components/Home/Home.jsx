@@ -1,8 +1,11 @@
 import React from 'react';
 import Marquee from "react-fast-marquee";
+import { useLoaderData } from 'react-router-dom';
 import Card from '../Card/Card';
 
 const Home = () => {
+    const alldata = useLoaderData()
+    console.log(alldata)
     return (
         <div>
           
@@ -46,7 +49,15 @@ const Home = () => {
                 </div>
             </Marquee>
 
-                <Card></Card>
+
+            <div className='grid grid-cols-2 gap-8 justify-between mt-5'> 
+            {
+                alldata.map(data => <Card data={data} key={data.id}></Card>)
+            }
+            </div>
+           
+
+                
         </div>
     );
 };
