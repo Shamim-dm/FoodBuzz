@@ -21,7 +21,7 @@ const Header = () => {
 
       </ul>
     </div>
-    <a className=" font-bold normal-case  sm:text-3xl">FoodBuzz</a>
+    <a className=" font-bold normal-case  sm:text-3xl">F<span className='text-red-500'>oo</span>dB<span className='text-sky-600'>u</span>zz</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -33,7 +33,9 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <button  className="btn-primary text-xs">Login</button>
+    
+    <ActiveLink to='/login'><button  className="btn-primary text-xs">Login</button></ActiveLink>
+    
   </div>
 </div>
 
