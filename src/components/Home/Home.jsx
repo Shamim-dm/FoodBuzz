@@ -1,5 +1,6 @@
 import React from 'react';
 import Marquee from "react-fast-marquee";
+import Card from '../Card/Card';
 
 const Home = () => {
     return (
@@ -45,7 +46,7 @@ const Home = () => {
                 </div>
             </Marquee>
 
-
+                <Card></Card>
         </div>
     );
 };
