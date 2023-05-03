@@ -13,6 +13,7 @@ import Blogs from './components/Blogs/Blogs.jsx';
 import Login from './components/Login/Login.jsx';
 
 import Register from './components/Register/Register.jsx';
+import Details from './components/Details/Details.jsx';
 
 const router = createBrowserRouter([
 
@@ -30,9 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'home',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: ({params}) => fetch('http://localhost:5000/chefs/')
        
       },
+    
       {
         path: 'blog',
         element: <Blogs></Blogs>
@@ -45,6 +48,11 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register></Register>
+      },
+      {
+        path:"/:id",
+        element: <Details></Details>,
+        loader:({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
       }
 
       // {

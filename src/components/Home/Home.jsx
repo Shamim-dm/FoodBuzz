@@ -50,7 +50,7 @@ const Home = () => {
             </Marquee>
 
 
-            <div className='grid grid-cols-2 gap-8 justify-between mt-5'> 
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-8 justify-between mt-5'> 
             {
                 alldata.map(data => <Card data={data} key={data.id}></Card>)
             }
