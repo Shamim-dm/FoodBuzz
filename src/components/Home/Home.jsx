@@ -3,6 +3,7 @@ import Marquee from "react-fast-marquee";
 import { useLoaderData } from 'react-router-dom';
 import BannerSection from '../BannerSection/BannerSection';
 import Card from '../Card/Card';
+import SpecialOffer from '../SpecialOffer/SpecialOffer';
 
 
 const Home = () => {
@@ -59,6 +60,9 @@ const Home = () => {
             </div>
 
             <BannerSection className=""></BannerSection>
+            <div className='mt-5'>
+            <SpecialOffer className=''></SpecialOffer>
+            </div>
            
 
                 
