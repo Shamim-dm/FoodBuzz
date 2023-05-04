@@ -1,7 +1,9 @@
 import React from 'react';
 import Marquee from "react-fast-marquee";
 import { useLoaderData } from 'react-router-dom';
+import BannerSection from '../BannerSection/BannerSection';
 import Card from '../Card/Card';
+
 
 const Home = () => {
     const alldata = useLoaderData()
@@ -55,6 +57,8 @@ const Home = () => {
                 alldata.map(data => <Card data={data} key={data.id}></Card>)
             }
             </div>
+
+            <BannerSection className=""></BannerSection>
            
 
                 

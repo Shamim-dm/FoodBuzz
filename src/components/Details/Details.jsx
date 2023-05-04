@@ -39,6 +39,8 @@ const Details = () => {
             </div>
             </div>
 
+
+                <h2 className='text-red-700 text-4xl text-center font-bold p-3'>Some Recipes of <span className='text-sky-600'> {name}</span> </h2>
            
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8 justify-between mt-5'>
             {
