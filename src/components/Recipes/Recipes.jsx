@@ -8,9 +8,8 @@ const Recipes = ({recipe}) => {
 
     const { chef_name, recipes_name, photo_url, cooking, ingredients, rating } = recipe;
 
-    const favouriteHandle =()=>{
-        console.log('tur nanir heda')
-        const notify = () => toast('Here is your toast.');
+    const favouriteHandle =()=>{     
+        toast.success('Your favorite is added!')
     }
 
     return (

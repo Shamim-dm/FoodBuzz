@@ -4,7 +4,7 @@ import Banner from '../Banner/Banner';
 import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import  { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Main = () => {
     return (
