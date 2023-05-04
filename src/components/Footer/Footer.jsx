@@ -7,7 +7,7 @@ const Footer = () => {
             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-12 pt-12 mb-8 p-2 text-slate-600 justify-between list-none'>
                 <div>
                     <h3 className='text-2xl text-white pb-6'>F<span className='text-red-500'>oo</span>dB<span className='text-sky-600'>u</span>zz</h3>
-                    <img src="https://cdn.dribbble.com/users/4184228/screenshots/14211180/food_love-01.jpg" alt="" />
+                    {/* <img className='w-12' src="https://cdn.dribbble.com/users/4184228/screenshots/14211180/food_love-01.jpg" alt="" /> */}
                 </div>
                 <div>
                     <h3 className='text-2xl text-white pb-6'>Company </h3>

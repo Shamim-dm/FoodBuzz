@@ -10,9 +10,7 @@ const Card = ({data}) => {
     return (
         <div>
 
-{/* {
-    recipes.map(g => console.log(g))
-} */}
+
 
             <div className="col glass rounded-md">
             <img className='rounded-md h-72 w-full' src={photo_url} />
