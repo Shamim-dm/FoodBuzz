@@ -10,9 +10,9 @@ const Card = ({data}) => {
     return (
         <div>
 
-{
+{/* {
     recipes.map(g => console.log(g))
-}
+} */}
 
             <div className="col glass rounded-md">
             <img className='rounded-md h-72 w-full' src={photo_url} />
@@ -27,7 +27,7 @@ const Card = ({data}) => {
                     </div>
 
                     <div className="flex justify-between mt-3 ">
-                    <Link to={`${id}`}><button className="text-sm bg-sky-500 text-white ">View Datails</button></Link>
+                    <Link to={`/${id}`}><button className="text-sm bg-sky-500 text-white ">View Datails</button></Link>
                     {/* <div className="">
                     <button className='text-sm  bg-slate-600 text-white flex items-center gap-2'><span> Add to Favorite</span><BookmarkIcon className="h-4 w-4 text-white" /></button>
                     

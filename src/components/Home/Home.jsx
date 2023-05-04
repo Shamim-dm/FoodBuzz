@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 
 const Home = () => {
     const alldata = useLoaderData()
-    console.log(alldata)
+    // console.log(alldata)
     return (
         <div>
           

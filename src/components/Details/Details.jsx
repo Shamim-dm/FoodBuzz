@@ -1,30 +1,39 @@
 import React from 'react';
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 const Details = () => {
-    const data = useLoaderData()
-    const [user, setUser]= useState('')
-    for (const id of  data){
-        setUser(id)
-    }
+    
+    const fakeDataAll = useLoaderData()
+    let { id } = useParams()
+    const users =  fakeDataAll.find(jobs => jobs.id === id)
+    const { name, photo_url, description, experience_years, likes, recipes_numbers,    } = users;
+  
 
-   
 
-    console.log(user)
+    
+
+    
+        
+    
+
+   console.log(users)
+//    console.log(fakeDataAll)
+//     console.log( id)
 
     return (
         <div>
             
 
             <div className="card lg:card-side bg-base-100 shadow-xl">
-            <figure><img src={user.name} alt="Album"/></figure>
+            <figure><img className='' src={photo_url} alt="Album"/></figure>
             <div className="card-body">
-                <h2 className="card-title">New album is released!</h2>
-                <p>Click the button to listen on Spotiwhy app.</p>
-                <div className="card-actions justify-end">
-                <button className="btn btn-primary">Listen</button>
-                </div>
+                <h2 className="card-title"><span className='text-red-800 font-bold'> Chef-Name: </span>{name}</h2>
+                <p className='text-slate-600'><span className='text-red-800 font-bold'> Short-Description: </span>{description}</p>
+                <p className='text-slate-600'><span className='text-red-800 font-bold'> Total Recipes: </span>{recipes_numbers} items</p>
+                <p className='text-slate-600'><span className='text-red-800 font-bold'> Experience: </span>{ experience_years} Years</p>
+                <p className='text-slate-600'><span className='text-red-800 font-bold'> Total-Likes: </span>{ likes} Years</p>
+                                    
             </div>
             </div>
 
