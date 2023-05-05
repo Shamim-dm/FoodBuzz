@@ -32,7 +32,7 @@ const Header = () => {
                             <li><ActiveLink to='/about'>About</ActiveLink></li>
                         </ul>
                     </div>
-                    <a className=" font-bold normal-case  sm:text-3xl">F<span className='text-red-500'>oo</span>dB<span className='text-sky-600'>u</span>zz</a>
+                    <a className=" font-bold normal-case text-xl  md:text-3xl">F<span className='text-red-500'>oo</span>dB<span className='text-sky-600'>u</span>zz</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 ">
@@ -49,9 +49,9 @@ const Header = () => {
 
                 <div className="navbar-end gap-2">
                     {
-                        user && <FaUserCircle style={{ fontSize: '2rem' }}></FaUserCircle>
+                        user && <img className='w-12 h-12 c rounded-full' src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80' />
                     }
-                    {user ? <Link onClick={handleLogout} className="btn bg-purple-900">Logout</Link> :
+                    {user ? <Link onClick={handleLogout} className="btn text-xs  bg-purple-900">Logout</Link> :
                         <Link to='/login' className="btn">Login</Link>}
                 </div>
             </div>

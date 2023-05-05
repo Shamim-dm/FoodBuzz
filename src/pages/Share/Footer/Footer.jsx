@@ -6,7 +6,7 @@ const Footer = () => {
         <> 
         <footer className="mt-5 footer p-10 bg-black text-white">
   <div>
-    <img className='w-[250px] h-[200px]' src={img} alt="" />
+    <img className='w-full h-[200px]' src='https://wallpaperaccess.com/full/772742.png' alt="" />
     
   </div> 
   <div>

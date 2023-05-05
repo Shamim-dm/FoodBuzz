@@ -28,7 +28,7 @@ const Details = () => {
 
 
     return (
-        <div>
+        <div className=''>
            {/* <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure><img className='' src={photo_url} alt="Album"/></figure>
             <div className="card-body">
@@ -52,7 +52,7 @@ const Details = () => {
 
 
 
-        <div className="card lg:card-side bg-base-100 shadow-xl">
+        <div className="card lg:card-side bg-base-100 shadow-xl w-11/12 mx-auto">
             <figure><img className='' src={photo_url} alt="Album"/></figure>
             <div className="card-body">
                 <h2 className="card-title"><span className='text-red-800 font-bold'> Chef-Name: </span>{name}</h2>
@@ -67,7 +67,7 @@ const Details = () => {
 
                 <h2 className='text-red-700 text-4xl text-center font-bold p-3'>Some Recipes of <span className='text-sky-600'> {name}</span> </h2>
            
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-8 justify-between mt-5'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8 justify-between mt-5 w-11/12 mx-auto '>
             {
                 recipes.map(recipe => <Recipes recipe={recipe} key={recipe.id} ></Recipes>)
             }
