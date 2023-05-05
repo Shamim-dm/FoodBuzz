@@ -10,7 +10,7 @@ const Chef = ({chef}) => {
                 <div className="col glass rounded-md">
                     <img className='rounded-md w-full h-72' src={photo_url} />
                     <div className="p-3">
-                        <h2 className="card-title text-yellow-300"><span className='text-purple-200'>Chef Name:</span>  {name}</h2>
+                        <h2 className="card-title "><span className='text-red-800'>Chef:</span>  {name}</h2>
                         
 
                         <div className='flex justify-between mt-3 font-bold gap-2'>
