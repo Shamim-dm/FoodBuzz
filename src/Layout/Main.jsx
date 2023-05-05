@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Main = () => {
     return (
-        <div>
+        <div className='w-11/12 mx-auto'>
             <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
