@@ -48,12 +48,12 @@ const  Recipes = ({recipe}) => {
 
                     <div className="flex justify-between mt-3 ">                 
                     <div className="">
-                    <button className='text-sm  bg-slate-600 text-white flex items-center gap-2 p-3' onClick={addFav}><span> Add to Favorite</span></button>
+                    <button className='text-sm  bg-slate-600 text-white flex items-center rounded-md gap-2 p-3' onClick={addFav}><span> Add to Favorite</span></button>
                     
                     </div>
                     </div>
                 </div>
-            </div>
+                </div>
        
     );
 };

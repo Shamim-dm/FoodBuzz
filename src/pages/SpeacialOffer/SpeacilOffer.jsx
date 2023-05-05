@@ -1,9 +1,12 @@
 import React from 'react';
+import './SpecialOffer.css'
+import Marquee from "react-fast-marquee";
 
 const SpeacilOffer = () => {
     return (
         <div>
              <div className='offerContainer  align-middle  w-full '>
+                <Marquee speed={100}>
             <div className=' bg-white bg-opacity-60 border rounded-md mx-auto align-middle md:w-6/12 w-12/12  '>
                 <h4 className='font-bold text-center pt-2 mb-4'>Our Special Offer:</h4>
 
@@ -32,7 +35,7 @@ const SpeacilOffer = () => {
                 
 
             </div>
-           
+           </Marquee>
         </div>
         </div>
     );

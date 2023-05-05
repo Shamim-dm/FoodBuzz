@@ -7,6 +7,7 @@ import slider4 from '../../../assets/slide04.jpg'
 import Chef from '../Chef/Chef';
 import { useLoaderData } from 'react-router-dom';
 import Banner from '../Banner/Banner';
+import SpeacilOffer from '../../SpeacialOffer/SpeacilOffer';
 
 const OtherComponent = React.lazy(() => import('../Chef/Chef'));
 
@@ -15,7 +16,7 @@ const Home = () => {
     return (
         <div className=''>
             <Marquee speed={100} className='text-center '>
-                <h1 className='  text-3xl py-2 animate-text bg-gradient-to-r from-teal-400  via-amber-500  to-orange-400 bg-clip-text text-transparent font-extrabold'>Food is not only for eat It's a Fashion </h1>
+                <h1 className='  text-3xl py-2 animate-text bg-gradient-to-r from-teal-400  via-amber-500  to-orange-400 bg-clip-text text-transparent font-extrabold'>If you can't feed a hundred people, then feed just one. ... </h1>
             </Marquee>
             <Marquee speed={200} className="carousel w-full rounded-lg">
                 <div id="item1" className="carousel-item w-full">
@@ -42,6 +43,12 @@ const Home = () => {
             </div>
             <div>
                 <Banner></Banner>
+            </div>
+
+            <div className='mt-5'>
+                <h4 className='pt-5 text-4xl text-center font-semibold text-red-800'>Our Speacial Offer</h4>
+                <hr className='pb-5 pt-1'/>
+                <SpeacilOffer></SpeacilOffer>
             </div>
 
 
