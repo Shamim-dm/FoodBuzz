@@ -1,96 +1,74 @@
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth';
-import React, { useRef, useState } from 'react';
+import React, { useContext, } from 'react';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { AuthContext } from '../AuthProviders/AuthProviders';
 
-import { Link } from 'react-router-dom';
 
-import app from '../../firebase/firebase.config';
-
-const auth = getAuth(app)
 const Login = () => {
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-    const emailRef = useRef()
+    const {signIn, googleLogin, githubLogin} = useContext(AuthContext);
+    
+    
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log('login page location', location)
+    const from = location.state?.from?.pathname || '/'
+
 
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+
         console.log(email, password)
 
-        // validation 
-        setError('')
-        setSuccess('')
-        if (!/(?=.[A-Z].[A-Z])/.test(password)) {
-            setError('please added two Uppercase letter')
-            return;
-        }
-        else if (!/(?=.[!@#$&])/.test(password)) {
-            setError('use one special character')
-            return;
-        }
-
-       
+        signIn(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            navigate(from, {replace: true})
+        })
+        .catch(error => console.log(error))
+    }
+    const handleGoogleSignIn = () => {
+        googleLogin()
         
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                const userLogined = result.user;
-                console.log(userLogined)
-                if(!userLogined.emailVerified){
-
-                }
-                setSuccess('user login successful')
-                setError('');
-                sendverificationEmail(result.user)
-            })
-            .catch(error => {
-                console.log(error.message)
-                setError(error.message)
-                
-            })
-
+    }
+    const handleGithubSignIn = () => {
+        githubLogin()
     }
 
-    const sendverificationEmail = (user)=>{
-        sendEmailVerification(user)
-        .then(result=>{
-            console.log(result)
-            alert('please verify your email address')
-        })
-       }
-
-     const handleResetPassword = event =>{
-         const email = emailRef.current.value;
-         if(!email){
-            alert("please provide your email address to reset password")
-         }
-         sendPasswordResetEmail(auth, email)
-         .then(()=>{
-            alert('please check your email')
-         })
-
-         .catch(error =>{
-            console.log(error);
-            setError(error.message)
-         })
-     }  
     return (
-        <div>
-            <form onSubmit={handleLogin}>
-                <div className="form-group">
-                    <label className='mb-2' htmlFor="email">Email address</label>
-                    <input type="email" className="form-control" id="email" ref={emailRef} name="email" placeholder="Enter email" required />
-                </div>
-                <div className="form-group">
-                    <label className='mb-2' htmlFor="password">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" placeholder="Password" required />
-                </div>
-                <button type="submit" className="my-3 btn btn-primary">Login</button>
-                <p><small> New to this website  ? please <Link to='/register'>register</Link></small></p>
-                <p className='text-danger'>{error}</p>
-                <p className='text-primary'>{success}</p>
+        <div className='container mx-auto bg-purple-300 rounded-lg py-2'>
+            <h3 className=' w-80 py-2 mt-2 mx-auto text-purple-100 font-bold text-lg rounded-lg bg-purple-900 text-center'>Please Login</h3>
+            <form onSubmit={handleLogin}  className="form-control w-full max-w-xs mx-auto">
+
+                <label className="label">
+                    <span className="label-text font-bold">What is your Email ?</span>
+
+                </label>
+                <input type="email" name='email' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
+                <label className="label">
+                    <span className="label-text font-bold">What is your Password?</span>
+
+                </label>
+                <input type="password"  name='password' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
+
+                <button className='btn btn-accent mt-2' type='submit'>Login</button>
+
+                <p>Don't have an account <span> <Link className='link link-primary' to="/register">Registration</Link></span></p>
+                <p onClick={handleGoogleSignIn} className='btn btn-error w-80 py-2 mt-2 mx-auto text-center'>
+                  <FaGoogle  className=' w-10 h-7'></FaGoogle>  Login With Google
+                </p>
+                <p  onClick={handleGithubSignIn} className='btn bg-black w-80 py-2 mt-2 mx-auto text-center'>
+                    <FaGithub className=' w-10 h-7'></FaGithub>
+                Login With GitHub 
+            </p>
             </form>
-            <p><small>Forget Password ? Please <button onClick={handleResetPassword} className='btn btn-link'> Reset password</button></small></p>
+ 
         </div>
     );
 };

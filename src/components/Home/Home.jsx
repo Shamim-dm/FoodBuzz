@@ -11,7 +11,9 @@ const Home = () => {
     // console.log(alldata)
     return (
         <div>
-          
+          <Marquee>
+            <h5 className='text-3xl'>If you can't feed a hundred people, then feed just one. ...</h5>
+          </Marquee>
 
           <Marquee speed={200} className="carousel w-full rounded-lg">
                 <div id="item1" className="carousel-item w-full">

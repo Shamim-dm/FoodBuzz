@@ -1,89 +1,63 @@
-import React, { useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth'
+import React, { useContext } from 'react';
+import { Link } from "react-router-dom";
+import { AuthContext } from '../AuthProviders/AuthProviders';
 
-import { Link } from 'react-router-dom';
-import app from '../../firebase/firebase.config';
-
-
-
-const auth =  getAuth(app)
 const Register = () => {
-    const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
+    const {createUser} = useContext(AuthContext)
 
+    const handleRegister = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        setSuccess('')
-        setError('')
-        const email = event.target.email.value
-        const password = event.target.password.value
-        const name = event.target.name.value
-        console.log(email, password , name)
+        console.log(name, password, email, photo)
 
-        // validation 
-        if (!/(?=.*[A-Z])/.test(password)) {
-            setError('please added at least one uppercase')
-            return
-        }
-
-        // create user in firebase 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                const userLogin = result.user;
-                console.log(userLogin)
-                setError('')
-                event.target.reset();
-                updateUserData(result.user, name)
-                setSuccess('user has been created successfully')
-            })
-
-            .catch(error => {
-                console.log(error.message)
-                setError(error.message)
-
-            })
-    }
-
-
-
-    const handleEmaildChange = (event) => {
-        console.log(event.target.value)
-        // setEmail(event.target.value)
-    }
-
-    const handlePasswordBlur = (event) => {
-        console.log(event.target.value)
-    }
-  
-    const updateUserData = (name, user)=>{
-        updateProfile(user, {
-            displayName: name
+        createUser(email, password)
+        .then(result => {
+            const createdUser = result.user;
+            console.log(createdUser);
         })
-        .then(()=>{
-            console.log('user name updated')
-        })
-        .catch(error=>{
-            setError(error.message)
+        .catch(error => {
+            console.log(error)
         })
     }
-
     return (
-        <div>
-            <h3>Please Register</h3>
+        <div className='container w-50 mx-auto bg-slate-300 rounded-lg py-2'>
+            <h2 className=' w-80 py-2 mt-2 mx-auto text-purple-100 font-bold text-lg rounded-lg bg-purple-900 text-center'>Please Register Your Account </h2>
 
-            <form onSubmit={handleSubmit} >
-                <input className='my-2 ps-2'  type="text" name="name" id="name" placeholder='type your name' required /><br></br>
+            <form onSubmit={handleRegister} className="form-control w-full max-w-xs mx-auto">
+                <label className="label">
+                    <span className="label-text font-bold">What is your name ?</span>
+                    
+                </label>
+                <input type="text" name='name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
 
-                <input className='my-2 ps-2' onChange={handleEmaildChange} type="email" name="email" id="email" placeholder='type your email' required /><br></br>
+                <label className="label">
+                    <span className="label-text font-bold">What is your image URL ?</span>
+                    
+                </label>
+                <input type="text" name='photo' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
+                <label className="label">
+                    <span className="label-text font-bold">What is your Email ?</span>
+                    
+                </label>
+                <input type="email" name='email' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
+                <label className="label">
+                    <span className="label-text font-bold">What is your Password?</span>
+                    
+                </label>
+                <input type="password" name='password' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
+                <button className='btn btn-accent mt-2' type='submit'>Register</button>
+
+                <p>Already have an account <span> <Link className='link link-primary' to="/login">Login</Link></span></p>
                 
-                <input className='ps-2' onBlur={handlePasswordBlur} type="password" name="password" id="password" placeholder='type your password' required /><br></br>
-
-                <input className='btn btn-primary my-2' type="submit" value="Register" />
             </form>
-            <p><small> Already have you an account ? please <Link to='/login'>login</Link></small></p>
-            <p className='text-center text-danger'>{error}</p>
-            <p className='text-center text-primary'>{success}</p>
         </div>
     );
 };

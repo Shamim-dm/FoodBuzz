@@ -4,7 +4,7 @@ import './SpeciaalOffer.css'
 const SpecialOffer = () => {
     return (
         <div className='offerContainer  align-middle  w-full '>
-            <div className=' bg-white bg-opacity-70 border rounded-md mx-auto align-middle md:w-6/12 w-12/12  '>
+            <div className=' bg-white bg-opacity-60 border rounded-md mx-auto align-middle md:w-6/12 w-12/12  '>
                 <h4 className='font-bold text-center pt-2 mb-4'>Our Special Offer:</h4>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 text-center '>
