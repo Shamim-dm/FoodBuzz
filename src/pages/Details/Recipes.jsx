@@ -9,7 +9,7 @@ const  Recipes = ({recipe}) => {
     const addFav = event => {
         
             event.currentTarget.disabled = true;
-            toast('Added Favorite');
+            toast.success('Added Favorite item');
        
       
         
@@ -48,7 +48,7 @@ const  Recipes = ({recipe}) => {
 
                     <div className="flex justify-between mt-3 ">                 
                     <div className="">
-                    <button className='text-sm  bg-slate-600 text-white flex items-center rounded-md gap-2 p-3' onClick={addFav}><span> Add to Favorite</span></button>
+                    <button className='text-sm btn  bg-slate-600 text-white flex items-center rounded-md gap-2 p-3' onClick={addFav}><span> Add to Favorite</span></button>
                     
                     </div>
                     </div>

@@ -6,9 +6,9 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const {signIn, googleLogin, githubLogin} = useContext(AuthContext);
-    const {error, setError} = useState('')
+   const [error, setError] = useState('')
 
-console.log(error)
+
     const navigate = useNavigate();
     const location = useLocation();
     // console.log('login page location', location)
@@ -35,12 +35,13 @@ console.log(error)
             console.log(loggedUser);
             navigate(from, {replace: true})
             toast.success("Login successful!")
-            return setError('')
+            setError('')
+            
            
         })
-        .catch(error => {
-            setError('Wrong Email and Password')
-        })
+        .catch(error => console.log(error))
+        setError('No Match Email or Password')
+        toast.error("Please type valid Email and Password !!")
         
       
     }
@@ -70,7 +71,7 @@ console.log(error)
                 </label>
                 <input type="password"  name='password' placeholder="Type here" required className="input input-bordered w-full max-w-xs" />
 
-        <p>{error}</p>
+                 <p className='text-red-500'> {error}</p>
 
                 <button className='btn btn-accent mt-2' type='submit'>Login</button>
 
