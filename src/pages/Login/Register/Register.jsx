@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../../provider/AuthProviders';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
     const {createUser} = useContext(AuthContext)
-
+    const [errors, setErrors] = useState('')
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
@@ -13,7 +13,11 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        toast.success("Register account successful!")
+          
+        if( password.length < 6){
+            toast.error("Please type Atlest 6 charecter")
+        }
+       
 
         // console.log(name, password, email, photo)
 
@@ -21,10 +25,14 @@ const Register = () => {
         .then(result => {
             const createdUser = result.user;
             console.log(createdUser);
+            event.target.reset()
+            toast.success("Register account successful!")
+            setErrors('')
         })
         .catch(error => {
-            console.log(error)
-        })
+          setErrors('Already Register this Email')
+          toast.error("Already Register this Email")
+    })
     }
     return (
         <div className='container w-50 mx-auto bg-purple-300 rounded-lg py-2'>
@@ -54,6 +62,8 @@ const Register = () => {
                     
                 </label>
                 <input type="password" name='password' placeholder="Type here" required className="input input-bordered w-full max-w-xs" />
+
+                <p className='text-red-500'>{errors}</p>
 
                 <button className='btn btn-accent mt-2' type='submit'>Register</button>
 

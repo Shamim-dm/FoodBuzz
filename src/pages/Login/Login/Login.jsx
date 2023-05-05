@@ -39,9 +39,11 @@ const Login = () => {
             
            
         })
-        .catch(error => console.log(error))
-        setError('No Match Email or Password')
+        .catch(error => {
+            setError('No Match Email or Password')
         toast.error("Please type valid Email and Password !!")
+        })
+        
         
       
     }
